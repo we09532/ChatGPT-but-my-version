@@ -14,6 +14,12 @@ cookie_path_dir = "./cookies/"  # NOTE: trailing slash (/) is required to avoid 
 sign = Login(EMAIL, PASSWD)
 cookies = sign.login(cookie_dir_path=cookie_path_dir, save_cookies=True)
 
+# Correct the URL by adding the scheme
+correct_url = "https://huggingface.co/login?next=https%3A%2F%2Fhuggingface.co%2Foauth%2Fauthorize%3Fclient_id%3D8f1a1d63-479b-46c8-84cb-521fe9f3222f%26scope%3Dopenid%2520profile%2520inference-api%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fhuggingface.co%252Fchat%252Flogin%252Fcallback%26state%3DeyJkYXRhIjp7ImV4cGlyYXRpb24iOjE3Mjk1Mjk3Mzg0NzAsInJlZGlyZWN0VXJsIjoiaHR0cHM6Ly9odWdnaW5nZmFjZS5jby9jaGF0L2xvZ2luL2NhbGxiYWNrIn0sInNpZ25hdHVyZSI6ImQwZGU0MDc4ZDMyM2QzNDIyOTk2MjYzYjQ2MTgxN2FiZmFhMzkyZTMyZWQ0MDBlMDgzNzI5MDc1ZmRlM2YwNjcifQ%253D%253D"
+
+# Use the corrected URL in your request
+res = requests.get(correct_url, allow_redirects=False)
+
 # Create ChatBot
 chatbot = hugchat.ChatBot(cookies=cookies.get_dict())  # or cookie_path="usercookies/<email>.json"
 
