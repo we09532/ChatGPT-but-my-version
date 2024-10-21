@@ -1,2 +1,3 @@
 scratchattach
+requests
 hugchat
