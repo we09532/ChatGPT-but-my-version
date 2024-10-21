@@ -1,5 +1,6 @@
-import time  #time.sleep() <-- Number in seconds
+import time  # time.sleep() <-- Number in seconds
 import random
+import requests
 import json
 import scratchattach as scratch
 import os
@@ -16,11 +17,10 @@ cookies = sign.login(cookie_dir_path=cookie_path_dir, save_cookies=True)
 # Create ChatBot
 chatbot = hugchat.ChatBot(cookies=cookies.get_dict())  # or cookie_path="usercookies/<email>.json"
 
-session = scratch3.login(os.environ['SCRATCH_USERNAME'], os.environ['SCRATCH_PASSWORD'])
+session = scratch.login(os.environ['SCRATCH_USERNAME'], os.environ['SCRATCH_PASSWORD'])
 
 studio = session.connect_studio("35801399")
-print(studio.comments(limit=1, offset=0))  #Fetches all project comments except for comment replies
-
+print(studio.comments(limit=1, offset=0))  # Fetches all project comments except for comment replies
 
 message_result = chatbot.chat(os.environ['CHATBOT_START_PROMPT'])
 message_str = message_result.wait_until_done()
@@ -34,7 +34,6 @@ while True:
     commentid = comment_alldata['id']
     text2 = "comment id: " + str(commentid)
     print(text2)
-    
     
     texttobechecked = "#@"
     if texttobechecked in comment:
