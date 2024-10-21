@@ -1,6 +1,5 @@
 import time  #time.sleep() <-- Number in seconds
 import random
-import requests
 import json
 import scratchattach as scratch
 import os
