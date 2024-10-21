@@ -1,2 +1,7 @@
 google-generativeai
 scratchattach
+time
+random
+requests
+json
+hugchat
