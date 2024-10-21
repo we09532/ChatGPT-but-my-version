@@ -7,8 +7,11 @@ on:
     - cron: '55 */5 * * *' # Every 5 hours 55 mins
 
 env:
-  GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-  SCRATCH_SESSION_ID: ${{ secrets.SCRATCH_SESSION_ID }}
+  CHATBOT_START_PROMPT: ${{ secrets.CHATBOT_START_PROMPT }}
+  HUGGINGFACEEMAIL: ${{ secrets.HUGGINGFACEEMAIL }}
+  HUGGINGFACEPASSWORD: ${{ secrets.HUGGINGFACEPASSWORD }}
+  SCRATCH_PASSWORD: ${{ secrets.SCRATCH_PASSWORD }}
+  SCRATCH_USERNAME: ${{ secrets.SCRATCH_USERNAME }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
